@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace GameLib
 {
@@ -55,13 +57,26 @@ namespace GameLib
 
         private void ExecuteLoad(String[] command)
         {
-            throw new ArgumentException("Unimplemented!");
+            if (command.Count() < 2)
+            {
+                throw new ArgumentException("missing an argument");
+            }
+
+            XmlSerializer serializer = new XmlSerializer(GameType());
+            StreamReader reader = new StreamReader(command[1]+".xml");
+            Game game = (Game)serializer.Deserialize(reader);
+            reader.Close();
+
+            ConsoleGamePlayer player = new ConsoleGamePlayer(game);
+            player.Play();
         }
 
         private void ExecuteExit()
         {
             _isRunning = false;
         }
+
+        public abstract Type GameType();
 
         public abstract Game CreateNewGame();
     }

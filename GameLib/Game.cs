@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Schema;
+using System.Xml.Serialization;
 
 namespace GameLib
 {
     public abstract class Game
     {
-        private Dictionary<String, IIdentifiable> _identifiables = new Dictionary<String, IIdentifiable>();
+        public SerializableHashSet<IIdentifiable> _identifiables = new SerializableHashSet<IIdentifiable>();
 
-        private String _currentRoomId;
+        public String _currentRoomId;
 
-        private bool _isRunning = false;
+        public bool _isRunning = false;
 
         public bool IsRunning()
         {
@@ -21,20 +24,19 @@ namespace GameLib
 
         public void Add(IIdentifiable identifiable)
         {
-            if (_identifiables.ContainsKey(identifiable.GetId()))
-            {
-                throw new ArgumentException(identifiable.GetId()+" already exists in the game");
-            }
-            _identifiables.Add(identifiable.GetId(), identifiable);
+            _identifiables.Add(identifiable);
         }
 
         public IIdentifiable Get(String id)
         {
-            if (!_identifiables.ContainsKey(id))
+            foreach (IIdentifiable identifiable in _identifiables)
             {
-                throw new IndexOutOfRangeException(id);
+                if (identifiable.GetId().Equals(id))
+                {
+                    return identifiable;
+                }
             }
-            return _identifiables[id];
+            throw new IndexOutOfRangeException("id not found");
         }
 
         public T Get<T>(String id)
@@ -50,7 +52,7 @@ namespace GameLib
         public ISet<T> GetAll<T>()
         {
             HashSet<T> result = new HashSet<T>();
-            foreach (IIdentifiable identifiable in _identifiables.Values)
+            foreach (IIdentifiable identifiable in _identifiables)
             {
                 if (identifiable is T)
                 {

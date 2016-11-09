@@ -12,6 +12,11 @@ namespace POTSem1
         public String _itemIdToHave;
         public bool _hasItem;
 
+        public Room()
+        {
+
+        }
+
         public Room(String id, String name) : base(id, name)
         {
             _hasItem = false;

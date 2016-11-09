@@ -7,11 +7,11 @@ using GameLib;
 
 namespace POTSem1
 {
-    class ScartingMachine : NamedIdentifiable, GameLib.IItem
+    public class ScartingMachine : NamedIdentifiable, GameLib.IItem
     {
         public const String ID = "scarting-machine";
         const String NAME = "Scarting machine, ends the game";
-
+        
         public ScartingMachine() : base(ID, NAME)
         {
         }

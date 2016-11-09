@@ -12,6 +12,11 @@ namespace POTSem1
         public String _roomIdToBeIn;
         public int _compromisingEuroCost;
 
+        public Item()
+        {
+
+        }
+
         public Item(String id, String name, String roomIdToBeIn, int compromisingEuroCost) : base(id, name)
         {
             _roomIdToBeIn = roomIdToBeIn;

@@ -10,6 +10,11 @@ namespace POTSem1
     {
         public String _name;
         
+        public NamedIdentifiable()
+        {
+
+        }
+
         public NamedIdentifiable(String id, String name) : base(id)
         {
             _name = name;

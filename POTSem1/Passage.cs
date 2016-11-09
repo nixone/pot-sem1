@@ -13,6 +13,11 @@ namespace POTSem1
         public String _fromRoomId;
         public String _toRoomId;
 
+        public Passage()
+        {
+
+        }
+
         public Passage(String id, int euroCost, String fromRoomId, String toRoomId) : base(id)
         {
             _euroCost = euroCost;

@@ -8,7 +8,12 @@ namespace GameLib
 {
     public class AbstractIdentifiable : IIdentifiable
     {
-        private String _id;
+        public String _id;
+
+        public AbstractIdentifiable()
+        {
+
+        }
 
         public AbstractIdentifiable(String id)
         {

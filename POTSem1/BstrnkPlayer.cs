@@ -13,5 +13,10 @@ namespace POTSem1
         {
             return GameOfBstrnk.createNew();
         }
+
+        public override Type GameType()
+        {
+            return CreateNewGame().GetType();
+        }
     }
 }

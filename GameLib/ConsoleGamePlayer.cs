@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Serialization;
 
 namespace GameLib
 {
@@ -59,7 +61,7 @@ namespace GameLib
                 catch (Exception e)
                 {
                     Console.WriteLine("There is a problem! " + e.Message);
-                    Console.WriteLine(e.StackTrace);
+                    Utils.PrintStackTrace(e);
                 }
                 Console.WriteLine();
             }
@@ -149,7 +151,7 @@ namespace GameLib
 
         private void ExecuteGoto(String[] command)
         {
-            if (command.Length < 1)
+            if (command.Length < 2)
             {
                 throw new ArgumentException("You have to provide second parameter");
             }
@@ -159,7 +161,7 @@ namespace GameLib
 
         private void ExecuteUse(String[] command)
         {
-            if (command.Length < 1)
+            if (command.Length < 2)
             {
                 throw new ArgumentException("You have to provide second parameter");
             }
@@ -170,15 +172,15 @@ namespace GameLib
 
         private void ExecuteSave(String[] command)
         {
-            if (command.Length < 1)
+            if (command.Length < 2)
             {
                 throw new ArgumentException("You have to provide second parameter");
             }
-            /*var ser = new System.Runtime.DataContractSerializer(typeof(MyObject));
-            using (XmlWriter xw = XmlWriter.Create(Console.Out))
-            {
-
-            }*/
+            XmlSerializer ser = new XmlSerializer(_game.GetType());
+            TextWriter writer = new StreamWriter(command[1]+".xml");
+            ser.Serialize(writer, _game);
+            writer.Close();
+            Console.WriteLine("Game was saved");
         }
     }
 }
