@@ -42,7 +42,9 @@
   <ItemGroup>
     <Compile Include="AbstractIdentifiable.cs" />
     <Compile Include="ConsoleGamePlayer.cs" />
+    <Compile Include="ConsoleMenuPlayer.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="GameResult.cs" />
     <Compile Include="IIdentifiable.cs" />
     <Compile Include="IItem.cs" />
     <Compile Include="IPassage.cs" />

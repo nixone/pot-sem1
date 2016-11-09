@@ -7,7 +7,7 @@ using GameLib;
 
 namespace POTSem1
 {
-    public class GameOfBstrnk : GameLib.Game
+    public class GameOfBstrnk : Game
     {
         public static GameOfBstrnk createNew()
         {
@@ -29,8 +29,12 @@ namespace POTSem1
             game.Add(new Passage("bonaparte-sumracna", 10, "bonaparte", "sumracna"));
             game.Add(new Passage("vahostav-sumracna", 40, "vahostav", "sumracna"));
             game.Add(new Passage("sumracna-naka", 15, "sumracna", "naka"));
-            game.Add(new Passage("naka-vahostav", 0, "naka", "vahostav"));
+            game.Add(new Passage("naka-vahostav", 20, "naka", "vahostav"));
+            game.Add(new Passage("sumracna-court", 13, "sumracna", "court"));
+            game.Add(new Passage("naka-court", 13, "naka", "court"));
             game.Add(new Passage("bonaparte-scarting-room", 0, "bonaparte", "scarting-room"));
+
+            game.Start("bonaparte");
 
             return game;
         }

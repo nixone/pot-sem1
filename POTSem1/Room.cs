@@ -7,7 +7,7 @@ using GameLib;
 
 namespace POTSem1
 {
-    public class Room : NamedIdentifiable, GameLib.IRoom
+    public class Room : NamedIdentifiable, IRoom
     {
         internal String _itemIdToHave;
         internal bool _hasItem;
@@ -26,12 +26,12 @@ namespace POTSem1
 
         public ISet<IItem> GetItems(Game game)
         {
-            HashSet<Item> items = new HashSet<Item>();
+            HashSet<IItem> items = new HashSet<IItem>();
             if (_hasItem)
             {
-                items.Add(game.Get<Item>(_itemIdToHave));
+                items.Add(game.Get<IItem>(_itemIdToHave));
             }
-            return (ISet<IItem>)items;
+            return items;
         }
 
         public void WalkIn(Game game, IPassage throughPassage, IRoom fromRoom)

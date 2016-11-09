@@ -8,9 +8,16 @@ namespace GameLib
 {
     public abstract class Game
     {
-        public Dictionary<String, IIdentifiable> _identifiables = new Dictionary<String, IIdentifiable>();
+        private Dictionary<String, IIdentifiable> _identifiables = new Dictionary<String, IIdentifiable>();
 
-        public String _currentRoomId;
+        private String _currentRoomId;
+
+        private bool _isRunning = false;
+
+        public bool IsRunning()
+        {
+            return _isRunning;
+        }
 
         public void Add(IIdentifiable identifiable)
         {
@@ -35,7 +42,7 @@ namespace GameLib
             IIdentifiable identifiable = Get(id);
             if (!(identifiable is T))
             {
-                throw new IndexOutOfRangeException(id + " is not of correct type");
+                throw new IndexOutOfRangeException(id + " is not of correct type, but it is "+identifiable.GetType());
             }
             return (T)identifiable;
         }
@@ -57,6 +64,12 @@ namespace GameLib
         {
             Get<IRoom>(startingRoomId);
             _currentRoomId = startingRoomId;
+            _isRunning = true;
+        }
+
+        public void Finish()
+        {
+            _isRunning = false;
         }
 
         public IRoom GetCurrentRoom()

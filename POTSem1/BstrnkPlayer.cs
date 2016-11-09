@@ -7,11 +7,11 @@ using GameLib;
 
 namespace POTSem1
 {
-    class Program
+    public class BstrnkPlayer : GameLib.ConsoleMenuPlayer
     {
-        static void Main(string[] args)
+        public override Game CreateNewGame()
         {
-            new BstrnkPlayer().Play();
+            return GameOfBstrnk.createNew();
         }
     }
 }

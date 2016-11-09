@@ -7,7 +7,7 @@ using GameLib;
 
 namespace POTSem1
 {
-    public class Item : NamedIdentifiable {
+    public class Item : NamedIdentifiable, IItem {
 
         internal String _roomIdToBeIn;
         internal int _compromisingEuroCost;
