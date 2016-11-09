@@ -6,9 +6,19 @@ using System.Threading.Tasks;
 
 namespace GameLib
 {
-    public abstract class AbstractIdentifiable : IIdentifiable
+    public class AbstractIdentifiable : IIdentifiable
     {
-        public abstract String GetId();
+        private String _id;
+
+        public AbstractIdentifiable(String id)
+        {
+            _id = id;
+        }
+
+        public String GetId()
+        {
+            return _id;
+        }
 
         public override int GetHashCode()
         {

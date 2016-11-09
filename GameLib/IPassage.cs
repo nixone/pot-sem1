@@ -8,5 +8,10 @@ namespace GameLib
 {
     public interface IPassage : IIdentifiable
     {
+        IRoom OneEnd(Game game);
+
+        IRoom SecondEnd(Game game);
+
+        void Use(Game game);
     }
 }

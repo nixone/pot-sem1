@@ -8,6 +8,6 @@ namespace GameLib
 {
     public interface IItem : IIdentifiable
     {
-        
+        void Use(Game game);
     }
 }

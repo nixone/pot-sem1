@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace GameLib
 {
-    interface IRoom : IIdentifiable
+    public interface IRoom : IIdentifiable
     {
-        
+        void WalkIn(Game game, IPassage throughPassage, IRoom fromRoom);
+
+        ISet<IItem> GetItems(Game game);
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GameLib;
 
 namespace POTSem1
 {
@@ -10,8 +11,9 @@ namespace POTSem1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello world!");
-            Console.ReadLine();
+            GameOfBstrnk game = GameOfBstrnk.createNew();
+            ConsoleGamePlayer consolePlayer = new ConsoleGamePlayer(game);
+            consolePlayer.Play();
         }
     }
 }
