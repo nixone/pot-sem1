@@ -8,7 +8,7 @@ namespace POTSem1
 {
     public class NamedIdentifiable : GameLib.AbstractIdentifiable
     {
-        private String _name;
+        public String _name;
         
         public NamedIdentifiable(String id, String name) : base(id)
         {

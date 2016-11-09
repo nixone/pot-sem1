@@ -16,7 +16,7 @@ namespace POTSem1
             game.Add(new Room("bonaparte", "Your home"));
 
             game.Add(new Room("sumracna", "Your work"));
-            game.Add(new Room("scarting-room", "Where everything disappears"));
+            
 
             game.Add(new Room("vahostav", "Vahostav HQ", "contracts"));
             game.Add(new Room("court", "Court of Slovak Republic", "court-materials"));
@@ -32,14 +32,17 @@ namespace POTSem1
             game.Add(new Passage("naka-vahostav", 20, "naka", "vahostav"));
             game.Add(new Passage("sumracna-court", 13, "sumracna", "court"));
             game.Add(new Passage("naka-court", 13, "naka", "court"));
-            game.Add(new Passage("bonaparte-scarting-room", 0, "bonaparte", "scarting-room"));
+
+            game.Add(new ScartingRoom());
+            game.Add(new Passage("bonaparte-scarting-room", 0, "bonaparte", ScartingRoom.ID));
+            game.Add(new ScartingMachine());
 
             game.Start("bonaparte");
 
             return game;
         }
 
-        internal int _eurosSpent = 0;
+        public int _eurosSpent = 0;
 
         private int GetTotalCompromisingMaterialsCost()
         {

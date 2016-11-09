@@ -9,8 +9,8 @@ namespace POTSem1
 {
     public class Room : NamedIdentifiable, IRoom
     {
-        internal String _itemIdToHave;
-        internal bool _hasItem;
+        public String _itemIdToHave;
+        public bool _hasItem;
 
         public Room(String id, String name) : base(id, name)
         {

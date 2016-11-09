@@ -9,8 +9,8 @@ namespace POTSem1
 {
     public class Item : NamedIdentifiable, IItem {
 
-        internal String _roomIdToBeIn;
-        internal int _compromisingEuroCost;
+        public String _roomIdToBeIn;
+        public int _compromisingEuroCost;
 
         public Item(String id, String name, String roomIdToBeIn, int compromisingEuroCost) : base(id, name)
         {

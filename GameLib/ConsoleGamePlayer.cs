@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace GameLib
 {
@@ -15,6 +16,7 @@ namespace GameLib
         const String COMMAND_USE = "use";
         const String COMMAND_STORY = "story";
         const String COMMAND_OBJECTIVE = "objective";
+        const String COMMAND_SAVE = "save";
 
         private Game _game;
         private bool _isPlaying = false;
@@ -86,6 +88,7 @@ namespace GameLib
                 case COMMAND_DISCOVER: ExecuteDiscover(); break;
                 case COMMAND_GO_TO: ExecuteGoto(command); break;
                 case COMMAND_USE: ExecuteUse(command); break;
+                case COMMAND_SAVE: ExecuteSave(command); break;
                 default: throw new ArgumentException("Sorry, we don't know this command. Use '" + COMMAND_HELP + "' for help");
             }
         }
@@ -105,6 +108,7 @@ namespace GameLib
             Console.WriteLine("\t" + COMMAND_DISCOVER + ": Discovers where are you and what you see");
             Console.WriteLine("\t" + COMMAND_GO_TO + " {room}: Goes to the specified room");
             Console.WriteLine("\t" + COMMAND_USE + " {item}: Uses the specified item");
+            Console.WriteLine("\t" + COMMAND_SAVE + " {saveName}: Save current state of the game");
         }
 
         private void ExecuteStory()
@@ -138,7 +142,7 @@ namespace GameLib
             Console.WriteLine("You can go to " + roomsToGoTo.Count + " rooms from here");
             foreach (IRoom room in roomsToGoTo)
             {
-                Console.WriteLine("\t"+room);
+                Console.WriteLine("\t" + room);
             }
             Console.WriteLine();
         }
@@ -150,7 +154,7 @@ namespace GameLib
                 throw new ArgumentException("You have to provide second parameter");
             }
             _game.GoInto(command[1]);
-            Console.WriteLine("Now you are in "+_game.GetCurrentRoom());
+            Console.WriteLine("Now you are in " + _game.GetCurrentRoom());
         }
 
         private void ExecuteUse(String[] command)
@@ -162,6 +166,19 @@ namespace GameLib
             IItem item = _game.Get<IItem>(command[1]);
             item.Use(_game);
             Console.WriteLine("You did use " + item);
+        }
+
+        private void ExecuteSave(String[] command)
+        {
+            if (command.Length < 1)
+            {
+                throw new ArgumentException("You have to provide second parameter");
+            }
+            /*var ser = new System.Runtime.DataContractSerializer(typeof(MyObject));
+            using (XmlWriter xw = XmlWriter.Create(Console.Out))
+            {
+
+            }*/
         }
     }
 }

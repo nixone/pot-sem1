@@ -9,9 +9,9 @@ namespace POTSem1
 {
     public class Passage : AbstractIdentifiable, IPassage
     {
-        int _euroCost;
-        String _fromRoomId;
-        String _toRoomId;
+        public int _euroCost;
+        public String _fromRoomId;
+        public String _toRoomId;
 
         public Passage(String id, int euroCost, String fromRoomId, String toRoomId) : base(id)
         {
@@ -22,12 +22,12 @@ namespace POTSem1
 
         public IRoom OneEnd(Game game)
         {
-            return game.Get<Room>(_fromRoomId);
+            return game.Get<IRoom>(_fromRoomId);
         }
 
         public IRoom SecondEnd(Game game)
         {
-            return game.Get<Room>(_toRoomId);
+            return game.Get<IRoom>(_toRoomId);
         }
 
         public void Use(Game game)
