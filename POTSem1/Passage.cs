@@ -37,7 +37,7 @@ namespace POTSem1
 
         public void Use(Game game)
         {
-            GameOfBstrnk myGame = (GameOfBstrnk)game;
+            BstrnkGame myGame = (BstrnkGame)game;
             myGame._eurosSpent += _euroCost;
         }
 

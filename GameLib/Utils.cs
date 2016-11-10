@@ -18,5 +18,24 @@ namespace GameLib
                 e = e.InnerException;
             }
         }
+
+        public static T[] subArray<T>(T[] array, int startIndex)
+        {
+            return subArray(array, startIndex, array.Length-startIndex);
+        }
+
+        public static T[] subArray<T>(T[] array, int startIndex, int length)
+        {
+            if (length-startIndex > array.Length)
+            {
+                throw new ArgumentException("not enough data for this startIndex and length");
+            }
+            T[] result = new T[length];
+            for (int i=startIndex,j=0; i<startIndex+length; i++,j++)
+            {
+                result[j] = array[i];
+            }
+            return result;
+        }
     }
 }

@@ -7,16 +7,21 @@ using GameLib;
 
 namespace POTSem1
 {
-    public class BstrnkPlayer : GameLib.ConsoleMenuPlayer
+    public class BstrnkCommander : MenuCommander
     {
         public override Game CreateNewGame()
         {
-            return GameOfBstrnk.createNew();
+            return BstrnkGame.createNew();
         }
 
         public override Type GameType()
         {
-            return CreateNewGame().GetType();
+            return typeof(BstrnkGame);
+        }
+
+        public override string GetTitle()
+        {
+            return "Menu of game BSTRNK";
         }
     }
 }

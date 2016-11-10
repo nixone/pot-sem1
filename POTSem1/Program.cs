@@ -11,7 +11,7 @@ namespace POTSem1
     {
         static void Main(string[] args)
         {
-            new BstrnkPlayer().Play();
+            new BstrnkCommander().TakeControl();
         }
     }
 }

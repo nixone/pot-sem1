@@ -41,14 +41,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractIdentifiable.cs" />
-    <Compile Include="ConsoleGamePlayer.cs" />
-    <Compile Include="ConsoleMenuPlayer.cs" />
+    <Compile Include="Command.cs" />
+    <Compile Include="Commander.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="GameCommander.cs" />
     <Compile Include="GameResult.cs" />
     <Compile Include="IIdentifiable.cs" />
     <Compile Include="IItem.cs" />
     <Compile Include="IPassage.cs" />
     <Compile Include="IRoom.cs" />
+    <Compile Include="MenuCommander.cs" />
+    <Compile Include="NamedIdentifiable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SerializableHashSet.cs" />
     <Compile Include="Utils.cs" />

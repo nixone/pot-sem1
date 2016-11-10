@@ -7,16 +7,15 @@ using GameLib;
 
 namespace POTSem1
 {
-    public class GameOfBstrnk : Game
+    public class BstrnkGame : Game
     {
-        public static GameOfBstrnk createNew()
+        public static BstrnkGame createNew()
         {
-            GameOfBstrnk game = new GameOfBstrnk();
+            BstrnkGame game = new BstrnkGame();
 
             game.Add(new Room("bonaparte", "Your home"));
 
             game.Add(new Room("sumracna", "Your work"));
-            
 
             game.Add(new Room("vahostav", "Vahostav HQ", "contracts"));
             game.Add(new Room("court", "Court of Slovak Republic", "court-materials"));

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace POTSem1
+namespace GameLib
 {
-    public class NamedIdentifiable : GameLib.AbstractIdentifiable
+    public class NamedIdentifiable : AbstractIdentifiable
     {
         public String _name;
         

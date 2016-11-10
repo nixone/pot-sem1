@@ -43,9 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BstrnkPlayer.cs" />
-    <Compile Include="NamedIdentifiable.cs" />
-    <Compile Include="GameOfBstrnk.cs" />
+    <Compile Include="BstrnkCommander.cs" />
+    <Compile Include="BstrnkGame.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Passage.cs" />
     <Compile Include="Program.cs" />
