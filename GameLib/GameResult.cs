@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,24 +10,15 @@ namespace GameLib
 {
     public class GameResult
     {
-        private int _score;
-
-        private String _playerName;
-
+        public int Score { get; set; }
+        
+        [Key]
+        public String PlayerName { get; set; }
+        
         public GameResult(String playerName, int score)
         {
-            _playerName = playerName;
-            _score = score;
-        }
-
-        public int GetScore()
-        {
-            return _score;
-        }
-
-        public String GetPlayerName()
-        {
-            return _playerName;
+            PlayerName = playerName;
+            Score = score;
         }
     }
 }
