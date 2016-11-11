@@ -2,7 +2,7 @@
 
 ## Cieľ práce
 
-Cieľom práce je naimplementovať jednoduchú textovú hru použitím objektových technológií .NET a jazyka C#.
+Cieľom práce bolo naimplementovať jednoduchú textovú hru použitím objektových technológií .NET a jazyka C#.
 Pri implementácii bolo potrebné dbať na objektový návrh ako aj na oddelenie logiky implementácie textových
 hier od samotnej implementácie nami zvoleného príbehu.
 
@@ -25,7 +25,7 @@ použijete skartovací prístroj a hra končí.
 
 ## Architektúra
 
-Implementácia je rozdelená na dva celky: Generalizovaná knižnica pre implementáciu textových hier, samotná implementácia hry BŠTRNK.
+Implementácia je rozdelená na dva celky: Generalizovaná knižnica pre implementáciu textových hier a samotná implementácia hry BŠTRNK.
 
 ### UML Diagram knižnice
 
@@ -47,8 +47,8 @@ Implementácia je rozdelená na dva celky: Generalizovaná knižnica pre impleme
 
 ## Vyriešené problémy
 
-* **Problém so serializáciou kolekcií definované rozhraniami do XML**: Bolo potrebné vytvoriť vlastnú implementáciu pre serializáciu generických kolekcií, konkrétne množín (HashSet), ktorých generický typ je definovaný iba rozhraním. Takýto use-case nie je naimplementovaný v základnej implementácii triedy XmlSerializer.
+* **Problém so serializáciou kolekcií definovanými rozhraniami do XML**: Bolo potrebné vytvoriť vlastnú implementáciu pre serializáciu generických kolekcií, konkrétne množín (HashSet), ktorých generický typ je definovaný iba rozhraním. Takýto use-case nie je naimplementovaný v základnej implementácii triedy XmlSerializer.
 
 ## Záver
 
-Pri implementácii som vďaka nutnosti vyriešiť mnoho problémov získal veľa skúseností v objektových technológiách, s ktorými som doteraz nemal veľa príležitostí pracovať. V porovnaní s ostatnými platformami / jazykmi vnímam pozitívne niektoré časti .NET frameworku a jazyku C#, ako sú napríklad práce s generickými triedami, ale takisto vnímam aj niektoré negatíva, ako sú napríklad nutnosť úvadzať kombinácie override a virtual modifikátorov pred metódami.
+Pri implementácii som vďaka nutnosti vyriešiť mnoho problémov získal veľa skúseností v objektových technológiách, s ktorými som doteraz nemal veľa príležitostí pracovať. V porovnaní s ostatnými platformami / jazykmi vnímam pozitívne niektoré časti .NET frameworku a jazyku C#, ako sú napríklad práce s generickými triedami, LINQ, EntityFramework, ale takisto vnímam aj niektoré negatíva, ako sú napríklad nutnosť úvadzať kombinácie override a virtual modifikátorov pred metódami.
