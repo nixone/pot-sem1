@@ -19,6 +19,8 @@ použijete skartovací prístroj a hra končí.
 
 ## Architektúra
 
+![ClassDiagram](raw/develop/GameLib/ClassDiagram.png)
+
 ## Použité technológie
 
 ## Požiadavky na hru
