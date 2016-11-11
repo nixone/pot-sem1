@@ -9,6 +9,11 @@ namespace POTSem1
 {
     public class BstrnkCommander : MenuCommander
     {
+        public BstrnkCommander(IHighScoreStorage highScoreStorage) : base(highScoreStorage)
+        {
+
+        }
+
         public override Game CreateNewGame()
         {
             return BstrnkGame.createNew();

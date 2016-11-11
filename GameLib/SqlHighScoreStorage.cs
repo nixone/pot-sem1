@@ -42,7 +42,19 @@ namespace GameLib
         {
             using (HighScoreContext context = new HighScoreContext(_connectionString))
             {
-                context.Results.Add(result);
+                var existing = (from r in context.Results
+                                where r.PlayerName.Equals(result.PlayerName)
+                                select r).First();
+
+                if (existing != null)
+                {
+                    existing.Score = Math.Max(existing.Score, result.Score);
+                }
+                else
+                {
+                    context.Results.Add(result);
+                }
+                
                 context.SaveChanges();
             }
         }

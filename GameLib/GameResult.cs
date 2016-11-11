@@ -15,6 +15,11 @@ namespace GameLib
         [Key]
         public String PlayerName { get; set; }
         
+        public GameResult()
+        {
+            // For entity framework
+        }
+
         public GameResult(String playerName, int score)
         {
             PlayerName = playerName;

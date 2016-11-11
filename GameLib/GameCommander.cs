@@ -20,7 +20,7 @@ namespace GameLib
             Add(new Command("objective", "Prints objective of the game"), ExecuteObjective);
             Add(new Command("discover", "Discovers where are you and what you see"), ExecuteDiscover);
             Add(new Command("goto", "Goes to the specified room").WithParameter("room"), ExecuteGoto);
-            Add(new Command("use", "Uses the specified item").WithParameter("item"), ExecuteUse);
+            Add(new Command("use", "Uses the item / takes it into inventory").WithParameter("item"), ExecuteUse);
             Add(new Command("save", "Saves current state of the game").WithParameter("saveName"), ExecuteSave);
         }
 

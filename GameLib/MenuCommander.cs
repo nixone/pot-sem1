@@ -10,18 +10,30 @@ namespace GameLib
 {
     public abstract class MenuCommander : Commander
     {
-        public MenuCommander()
+        private IHighScoreStorage _highScoreStorage;
+
+        public MenuCommander(IHighScoreStorage highScoreStorage)
         {
             Add(new GameLib.Command("create", "Creates and starts new game"), CreateGame);
             Add(new GameLib.Command("load", "Loads and continues existing game").WithParameter("saveName"), LoadGame);
+
+            if (highScoreStorage != null)
+            {
+                _highScoreStorage = highScoreStorage;
+                Add(new GameLib.Command("highscore", "Shows top 10 of scores"), ShowHighScore);
+            }
         }
 
         public void CreateGame(Command command, String [] parameters)
         {
             Game game = CreateNewGame();
             GameCommander commander = CreateGameCommander(game);
-            commander.Play();
-            // TODO Handle game result
+            GameResult result = commander.Play();
+            
+            if (result != null)
+            {
+                HandleGameResult(result);
+            }
         }
 
         public void LoadGame(Command command, String [] parameters)
@@ -32,10 +44,37 @@ namespace GameLib
             reader.Close();
 
             GameCommander commander = CreateGameCommander(game);
-            commander.Play();
-            // TODO Handle game result
+            GameResult result = commander.Play();
+            if (result != null)
+            {
+                HandleGameResult(result);
+            }
 
             Console.WriteLine("You are now back in menu. Use 'help' command for options.");
+        }
+
+        public void ShowHighScore(Command command, String [] parameters)
+        {
+            if (_highScoreStorage != null)
+            {
+                IList<GameResult> topTen = _highScoreStorage.GetTopTen();
+                int position = 1;
+
+                foreach (GameResult result in topTen)
+                {
+                    Console.WriteLine(position + ". " + result.PlayerName + " with score " + result.Score);
+                    position++;
+                }
+            }
+        }
+
+        public void HandleGameResult(GameResult result)
+        {
+            if (_highScoreStorage != null)
+            {
+                _highScoreStorage.SaveResult(result);
+                Console.WriteLine("Your score was marked in the database.");
+            }
         }
 
         public virtual GameCommander CreateGameCommander(Game game)

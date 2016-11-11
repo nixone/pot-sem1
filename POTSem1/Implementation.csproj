@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="BstrnkCommander.cs" />
     <Compile Include="BstrnkGame.cs" />
+    <Compile Include="BstrnkHighScoreStorage.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Passage.cs" />
     <Compile Include="Program.cs" />

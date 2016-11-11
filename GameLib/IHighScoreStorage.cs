@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameLib
 {
-    interface IHighScoreStorage
+    public interface IHighScoreStorage
     {
         IList<GameResult> GetTopTen();
 

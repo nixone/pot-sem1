@@ -71,7 +71,7 @@ namespace POTSem1
 
         public override int GetScore()
         {
-            return GetTotalCompromisingMaterialsCost() + _eurosSpent;
+            return -GetTotalCompromisingMaterialsCost() + _eurosSpent;
         }
 
         public override string GetTitle()
@@ -81,12 +81,12 @@ namespace POTSem1
 
         public override string GetStory()
         {
-            return "BSTRNK Story";
+            return  "You did find yourself in a world full of justice, fair trade, public competitions, in a world without corruption, which is called by today's youth as a time of 'cash'. Name of course suggess the same named peanuts and definitely not huge number of corruption cases and huge amounts of money handed in cash.";
         }
 
         public override string GetObjective()
         {
-            return "BSTRNK Objective";
+            return "You did wake up in your home, called Bonaparte. Your goal is to collect compromising materials from the National Court, National Criminal Agency and company Vahostav. Your goal is to do so with spending as much tax payers money as possible. Each travel costs something. All the compromising materials you have to bring to your home to scarting room, where it disappears and the game ends.";
         }
     }
 }

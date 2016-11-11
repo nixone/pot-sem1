@@ -62,7 +62,6 @@ namespace GameLib
                 catch (Exception e)
                 {
                     Console.WriteLine("There is a problem! " + e.Message);
-                    Utils.PrintStackTrace(e);
                 }
                 Console.WriteLine();
             }
@@ -96,6 +95,7 @@ namespace GameLib
         private void ExecuteExit(Command command, String[] parameters)
         {
             Stop();
+            Console.WriteLine("You are now in a menu above.");
         }
 
         private void ExecuteHelp(Command command, String[] parameters)
