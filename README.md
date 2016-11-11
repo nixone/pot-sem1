@@ -19,7 +19,7 @@ použijete skartovací prístroj a hra končí.
 
 ## Architektúra
 
-![ClassDiagram](raw/develop/GameLib/ClassDiagram.png)
+![ClassDiagram](https://github.com/nixone/pot-sem1/raw/develop/GameLib/ClassDiagram.png)
 
 ## Použité technológie
 
