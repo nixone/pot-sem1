@@ -7,6 +7,10 @@ using GameLib;
 
 namespace POTSem1
 {
+    /// <summary>
+    /// Specific item impelmentation for BSTRNK game
+    /// These items have one designated room to start from and compromising cost for the player
+    /// </summary>
     public class Item : NamedIdentifiable, IItem {
 
         public String _roomIdToBeIn;
@@ -25,6 +29,7 @@ namespace POTSem1
 
         public void Use(Game game)
         {
+            // Tells the room that it doesnt have the item anymore
             game.Get<Room>(_roomIdToBeIn)._hasItem = false;
         }
     }

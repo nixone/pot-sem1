@@ -7,6 +7,9 @@ using GameLib;
 
 namespace POTSem1
 {
+    /// <summary>
+    /// Program class to invoke BSTRNK game menu
+    /// </summary>
     class Program
     {
         static void Main(string[] args)

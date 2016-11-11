@@ -9,6 +9,9 @@ using System.Xml.Serialization;
 
 namespace GameLib
 {
+    /// <summary>
+    /// Abstract base for a game with score and some objects with identifiers.
+    /// </summary>
     public abstract class Game
     {
         public SerializableHashSet<IIdentifiable> _identifiables = new SerializableHashSet<IIdentifiable>();
@@ -17,16 +20,29 @@ namespace GameLib
 
         public bool _isRunning = false;
 
+        /// <summary>
+        /// Is the game still running
+        /// </summary>
+        /// <returns>whether the game is running or not</returns>
         public bool IsRunning()
         {
             return _isRunning;
         }
 
+        /// <summary>
+        /// Adds a new object to the game
+        /// </summary>
+        /// <param name="identifiable">object</param>
         public void Add(IIdentifiable identifiable)
         {
             _identifiables.Add(identifiable);
         }
 
+        /// <summary>
+        /// Returns the object from game
+        /// </summary>
+        /// <param name="id">id of the object</param>
+        /// <returns></returns>
         public IIdentifiable Get(String id)
         {
             foreach (IIdentifiable identifiable in _identifiables)
@@ -39,6 +55,12 @@ namespace GameLib
             throw new IndexOutOfRangeException("id not found");
         }
 
+        /// <summary>
+        /// Same as Get(String), but checks and returns the correct type
+        /// </summary>
+        /// <typeparam name="T">type</typeparam>
+        /// <param name="id">id</param>
+        /// <returns></returns>
         public T Get<T>(String id)
         {
             IIdentifiable identifiable = Get(id);
@@ -49,6 +71,11 @@ namespace GameLib
             return (T)identifiable;
         }
 
+        /// <summary>
+        /// Returns all the identifiables of the specified type
+        /// </summary>
+        /// <typeparam name="T">type</typeparam>
+        /// <returns>objects with type</returns>
         public ISet<T> GetAll<T>()
         {
             HashSet<T> result = new HashSet<T>();
@@ -62,6 +89,10 @@ namespace GameLib
             return result;
         }
 
+        /// <summary>
+        /// Starts the game at a specified room
+        /// </summary>
+        /// <param name="startingRoomId">room id</param>
         public void Start(String startingRoomId)
         {
             Get<IRoom>(startingRoomId);
@@ -69,16 +100,27 @@ namespace GameLib
             _isRunning = true;
         }
 
+        /// <summary>
+        /// Marks the game as finished
+        /// </summary>
         public void Finish()
         {
             _isRunning = false;
         }
 
+        /// <summary>
+        /// Returns a room, which the player is in right now
+        /// </summary>
+        /// <returns></returns>
         public IRoom GetCurrentRoom()
         {
             return Get<IRoom>(_currentRoomId);
         }
 
+        /// <summary>
+        /// Tries to go to a room with specified id
+        /// </summary>
+        /// <param name="id">room id</param>
         public void GoInto(String id)
         {
             IRoom current = GetCurrentRoom();
@@ -97,6 +139,12 @@ namespace GameLib
             _currentRoomId = id;
         }
 
+        /// <summary>
+        /// Get a passage between two rooms
+        /// </summary>
+        /// <param name="from">room from</param>
+        /// <param name="to">room to</param>
+        /// <returns>IPassage, if exists</returns>
         public IPassage GetPassageBetween(IRoom from, IRoom to)
         {
             foreach (IPassage passage in GetAll<IPassage>())
@@ -113,6 +161,11 @@ namespace GameLib
             throw new ArgumentException("couldnt find a passage between these rooms");
         }
 
+        /// <summary>
+        /// Get rooms that player can walk to from a specified room
+        /// </summary>
+        /// <param name="from">room to go from</param>
+        /// <returns>rooms to go to</returns>
         public ISet<IRoom> GetRoomsToWalkTo(IRoom from)
         {
             HashSet<IRoom> rooms = new HashSet<IRoom>();
@@ -130,12 +183,28 @@ namespace GameLib
             return rooms;
         }
 
+        /// <summary>
+        /// Get title of the game
+        /// </summary>
+        /// <returns>title</returns>
         public abstract String GetTitle();
 
+        /// <summary>
+        /// Get current score of the game
+        /// </summary>
+        /// <returns>current score</returns>
         public abstract int GetScore();
  
+        /// <summary>
+        /// Get a story
+        /// </summary>
+        /// <returns>game story</returns>
         public abstract String GetStory();
 
+        /// <summary>
+        /// Get a game objective
+        /// </summary>
+        /// <returns>game objective</returns>
         public abstract String GetObjective();
     }
 }

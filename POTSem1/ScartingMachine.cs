@@ -7,6 +7,9 @@ using GameLib;
 
 namespace POTSem1
 {
+    /// <summary>
+    /// Special scarting machine impelmentation of Item for BSTRNK game
+    /// </summary>
     public class ScartingMachine : NamedIdentifiable, GameLib.IItem
     {
         public const String ID = "scarting-machine";
@@ -18,6 +21,7 @@ namespace POTSem1
 
         public void Use(Game game)
         {
+            // Using scarting machine finishes the game
             game.Finish();
         }
     }

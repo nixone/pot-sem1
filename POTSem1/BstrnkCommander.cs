@@ -7,6 +7,9 @@ using GameLib;
 
 namespace POTSem1
 {
+    /// <summary>
+    /// Specific implementation of commander for BSTRNK game
+    /// </summary>
     public class BstrnkCommander : MenuCommander
     {
         public BstrnkCommander(IHighScoreStorage highScoreStorage) : base(highScoreStorage)

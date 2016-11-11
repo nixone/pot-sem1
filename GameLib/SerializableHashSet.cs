@@ -9,6 +9,10 @@ using System.Xml.Serialization;
 
 namespace GameLib
 {
+    /// <summary>
+    /// HashSet of items with support for serializing interface items (not supported by default by XmlSerializer).
+    /// </summary>
+    /// <typeparam name="T">interface of items</typeparam>
     public class SerializableHashSet<T> : HashSet<T>, IXmlSerializable
     {
         public XmlSchema GetSchema()

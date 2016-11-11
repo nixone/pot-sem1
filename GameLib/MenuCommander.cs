@@ -8,10 +8,19 @@ using System.Xml.Serialization;
 
 namespace GameLib
 {
+    /// <summary>
+    /// Commander specificly implemented to navigate around multiple games.
+    /// Supports creating new game, loading new one, and managing high scores
+    /// if high score storage was supplied.
+    /// </summary>
     public abstract class MenuCommander : Commander
     {
         private IHighScoreStorage _highScoreStorage;
 
+        /// <summary>
+        /// Creates new menu commander with optional high score storage
+        /// </summary>
+        /// <param name="highScoreStorage">high score storage (optional)</param>
         public MenuCommander(IHighScoreStorage highScoreStorage)
         {
             Add(new GameLib.Command("create", "Creates and starts new game"), CreateGame);
@@ -24,7 +33,7 @@ namespace GameLib
             }
         }
 
-        public void CreateGame(Command command, String [] parameters)
+        private void CreateGame(Command command, String [] parameters)
         {
             Game game = CreateNewGame();
             GameCommander commander = CreateGameCommander(game);
@@ -36,7 +45,7 @@ namespace GameLib
             }
         }
 
-        public void LoadGame(Command command, String [] parameters)
+        private void LoadGame(Command command, String [] parameters)
         {
             XmlSerializer serializer = new XmlSerializer(GameType());
             StreamReader reader = new StreamReader(parameters[0] + ".xml");
@@ -53,7 +62,7 @@ namespace GameLib
             Console.WriteLine("You are now back in menu. Use 'help' command for options.");
         }
 
-        public void ShowHighScore(Command command, String [] parameters)
+        private void ShowHighScore(Command command, String [] parameters)
         {
             if (_highScoreStorage != null)
             {
@@ -68,7 +77,7 @@ namespace GameLib
             }
         }
 
-        public void HandleGameResult(GameResult result)
+        private void HandleGameResult(GameResult result)
         {
             if (_highScoreStorage != null)
             {
@@ -77,13 +86,27 @@ namespace GameLib
             }
         }
 
+        /// <summary>
+        /// Create new game commander for a specified game. Ment to be overriden if necessary.
+        /// </summary>
+        /// <param name="game">game</param>
+        /// <returns>game commander</returns>
         public virtual GameCommander CreateGameCommander(Game game)
         {
             return new GameCommander(game);
         }
 
+        /// <summary>
+        /// Creates new game. Needs to be implemented.
+        /// </summary>
+        /// <returns></returns>
         public abstract Game CreateNewGame();
 
+        /// <summary>
+        /// Get the type of the game this commander handles. Needs to be the type of the game
+        /// created in CreateNewGame()
+        /// </summary>
+        /// <returns></returns>
         public abstract Type GameType();
     }
 }

@@ -7,9 +7,15 @@ using System.Threading.Tasks;
 
 namespace POTSem1
 {
+    /// <summary>
+    /// Specific implementation of high score storage for BSTRNK game
+    /// </summary>
     public class BstrnkHighScoreStorage : SqlHighScoreStorage
     {
-
+        /// <summary>
+        /// Obtains the connection string based on definition and asks the user through the console for a database password
+        /// </summary>
+        /// <returns>full connection string</returns>
         public static String ObtainConnectionString()
         {
             Console.Write("Connecting to database, please enter owners student number: ");

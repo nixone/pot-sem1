@@ -8,8 +8,14 @@ using System.Threading.Tasks;
 
 namespace GameLib
 {
+    /// <summary>
+    /// Implementation of Sql high score storage
+    /// </summary>
     public class SqlHighScoreStorage : IHighScoreStorage
     {
+        /// <summary>
+        /// Database context for entity framework
+        /// </summary>
         public class HighScoreContext : DbContext
         {
             public HighScoreContext(String connectionString) : base(connectionString)
@@ -21,6 +27,10 @@ namespace GameLib
 
         private String _connectionString;
             
+        /// <summary>
+        /// Creates new sql high score storage with a specified connection string
+        /// </summary>
+        /// <param name="connectionString">database connection string</param>
         public SqlHighScoreStorage(String connectionString)
         {
             _connectionString = connectionString;

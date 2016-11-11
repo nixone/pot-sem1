@@ -7,8 +7,15 @@ using GameLib;
 
 namespace POTSem1
 {
+    /// <summary>
+    /// Specific implementation of Game for BSTRNK game
+    /// </summary>
     public class BstrnkGame : Game
     {
+        /// <summary>
+        /// Creates and populates BSTRNK game
+        /// </summary>
+        /// <returns></returns>
         public static BstrnkGame createNew()
         {
             BstrnkGame game = new BstrnkGame();
@@ -41,8 +48,15 @@ namespace POTSem1
             return game;
         }
 
+        /// <summary>
+        /// Euros spent throughout the game
+        /// </summary>
         public int _eurosSpent = 0;
 
+        /// <summary>
+        /// Collects the total compromising cost of items not yet colelcted
+        /// </summary>
+        /// <returns>cost in euros</returns>
         private int GetTotalCompromisingMaterialsCost()
         {
             int missingCompromisingMaterialsCost = 0;
@@ -69,6 +83,11 @@ namespace POTSem1
             }
         }
 
+        /// <summary>
+        /// Every not collected material decrements the score by its cost
+        /// Every used euro increments the score by its cost
+        /// </summary>
+        /// <returns></returns>
         public override int GetScore()
         {
             return -GetTotalCompromisingMaterialsCost() + _eurosSpent;

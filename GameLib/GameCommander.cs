@@ -8,10 +8,17 @@ using System.Xml.Serialization;
 
 namespace GameLib
 {
+    /// <summary>
+    /// Commander specificly implemented for navigating around game
+    /// </summary>
     public class GameCommander : Commander
     {
         private Game _game;
 
+        /// <summary>
+        /// Create a commander for a specified game
+        /// </summary>
+        /// <param name="game">game</param>
         public GameCommander(Game game)
         {
             _game = game;
@@ -24,6 +31,10 @@ namespace GameLib
             Add(new Command("save", "Saves current state of the game").WithParameter("saveName"), ExecuteSave);
         }
 
+        /// <summary>
+        /// Plays the game from this commander
+        /// </summary>
+        /// <returns>game result if the game finished or null if not</returns>
         public GameResult Play()
         {
             base.TakeControl();
@@ -49,12 +60,12 @@ namespace GameLib
             Console.WriteLine(_game.GetStory());
         }
 
-        public void ExecuteObjective(Command command, String[] parameters)
+        private void ExecuteObjective(Command command, String[] parameters)
         {
             Console.WriteLine(_game.GetObjective());
         }
 
-        public void ExecuteDiscover(Command command, String[] parameters)
+        private void ExecuteDiscover(Command command, String[] parameters)
         {
             Console.WriteLine("Game: " + _game);
             Console.WriteLine("Current room: " + _game.GetCurrentRoom());
@@ -78,20 +89,20 @@ namespace GameLib
             Console.WriteLine();
         }
 
-        public void ExecuteGoto(Command command, String[] parameters)
+        private void ExecuteGoto(Command command, String[] parameters)
         {
             _game.GoInto(parameters[0]);
             Console.WriteLine("Now you are in " + _game.GetCurrentRoom());
         }
 
-        public void ExecuteUse(Command command, String[] parameters)
+        private void ExecuteUse(Command command, String[] parameters)
         {
             IItem item = _game.Get<IItem>(parameters[0]);
             item.Use(_game);
             Console.WriteLine("You did use " + item);
         }
 
-        public void ExecuteSave(Command command, String[] parameters)
+        private void ExecuteSave(Command command, String[] parameters)
         {
             XmlSerializer ser = new XmlSerializer(_game.GetType());
             TextWriter writer = new StreamWriter(parameters[0] + ".xml");

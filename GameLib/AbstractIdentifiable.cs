@@ -6,20 +6,34 @@ using System.Threading.Tasks;
 
 namespace GameLib
 {
+    /// <summary>
+    /// Basic implementation of objects with non-changing identifier
+    /// </summary>
     public class AbstractIdentifiable : IIdentifiable
     {
         public String _id;
 
+        /// <summary>
+        /// Required for serialization, should not be used from code
+        /// </summary>
         public AbstractIdentifiable()
         {
 
         }
 
+        /// <summary>
+        /// Usual constructor which sets the id of the object
+        /// </summary>
+        /// <param name="id"></param>
         public AbstractIdentifiable(String id)
         {
             _id = id;
         }
 
+        /// <summary>
+        /// Returns the object's id
+        /// </summary>
+        /// <returns></returns>
         public String GetId()
         {
             return _id;

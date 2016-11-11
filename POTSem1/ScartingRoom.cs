@@ -7,6 +7,9 @@ using GameLib;
 
 namespace POTSem1
 {
+    /// <summary>
+    /// Special implementation of scarting room for BSTRNK game
+    /// </summary>
     public class ScartingRoom : NamedIdentifiable, GameLib.IRoom
     {
         public const String ID = "scarting-room";
@@ -18,6 +21,7 @@ namespace POTSem1
 
         public ISet<IItem> GetItems(Game game)
         {
+            // Scarting room has only one item exactly, scarting machine
             HashSet<IItem> result = new HashSet<IItem>();
             result.Add(game.Get<ScartingMachine>(ScartingMachine.ID));
             return result;
