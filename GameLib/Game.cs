@@ -18,6 +18,10 @@ namespace GameLib
 
         public String _currentRoomId;
 
+        public DateTime _startDateTime;
+
+        public DateTime _stopDateTime;
+
         public bool _isRunning = false;
 
         /// <summary>
@@ -98,6 +102,7 @@ namespace GameLib
             Get<IRoom>(startingRoomId);
             _currentRoomId = startingRoomId;
             _isRunning = true;
+            _startDateTime = DateTime.Now;
         }
 
         /// <summary>
@@ -106,6 +111,7 @@ namespace GameLib
         public void Finish()
         {
             _isRunning = false;
+            _stopDateTime = DateTime.Now;
         }
 
         /// <summary>

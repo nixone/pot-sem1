@@ -20,6 +20,7 @@ namespace GameLib
         {
             public HighScoreContext(String connectionString) : base(connectionString)
             {
+                SaveChanges();
             }
 
             public DbSet<GameResult> Results { get; set; }
@@ -52,19 +53,25 @@ namespace GameLib
         {
             using (HighScoreContext context = new HighScoreContext(_connectionString))
             {
-                var existing = (from r in context.Results
+                var matching = (from r in context.Results
                                 where r.PlayerName.Equals(result.PlayerName)
-                                select r).First();
-
-                if (existing != null)
+                                select r);
+                if (matching.Count() > 1)
                 {
-                    existing.Score = Math.Max(existing.Score, result.Score);
+                    var existing = matching.First();
+                    if (existing.Score < result.Score)
+                    {
+                        existing.Score = result.Score;
+                        existing.StartTime = result.StartTime;
+                        existing.StopTime = result.StopTime;
+                        existing.MachineName = result.MachineName;
+                    }
                 }
                 else
                 {
                     context.Results.Add(result);
                 }
-                
+
                 context.SaveChanges();
             }
         }

@@ -71,7 +71,7 @@ namespace GameLib
 
                 foreach (GameResult result in topTen)
                 {
-                    Console.WriteLine(position + ". " + result.PlayerName + " with score " + result.Score);
+                    Console.WriteLine(position + ". " + result.PlayerName + " with score " + result.Score + ". Game was started " + result.StartTime + " and finished " + result.StopTime + " at " + result.MachineName + ".");
                     position++;
                 }
             }

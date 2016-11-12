@@ -45,7 +45,7 @@ namespace GameLib
                 Console.WriteLine("Hooray! You finished the game with total score of " + score + "!");
                 Console.Write("Please enter your name: ");
                 String name = Console.ReadLine();
-                return new GameResult(name, score);
+                return new GameResult(name, score, _game._startDateTime, _game._stopDateTime, Environment.MachineName);
             }
             return null;
         }
